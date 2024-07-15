@@ -3,12 +3,12 @@ import { useContext, useState } from 'react'
 import context from '../context/noteContext'
 import NoteItem from './NoteItem'
 import Modal from './Modal'
-const Notes = () => {
+const Notes = (props) => {
     const contextval = useContext(context);
     const { notes, fetchnotes, editNote } = contextval;
     const ref = useRef(null);
-    const refclose=useRef(null);
-    const [note, setnotes] = useState({ title: "", description: "", tag: "" ,id:""});
+    const refclose = useRef(null);
+    const [note, setnotes] = useState({ title: "", description: "", tag: "", id: "" });
     const onchange = (e) => {
         setnotes({ ...note, [e.target.name]: e.target.value })
     }
@@ -16,9 +16,9 @@ const Notes = () => {
 
     const handleclick = (e) => {
         editNote(note.title, note.description, note.tag, note._id);
+        props.showalert("Note edited successfully", "success");
         refclose.current.click();
     }
-
     const updatenote = (currentNote) => {
         ref.current.click();
         setnotes(currentNote);
@@ -58,7 +58,7 @@ const Notes = () => {
                             </div>
                             <div className="modal-footer">
                                 <button ref={refclose} type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" disabled={note.title.length<5 || note.description.length<5} className="btn btn-primary" onClick={handleclick}>Update Note</button>
+                                <button type="button" disabled={note.title.length < 5 || note.description.length < 5} className="btn btn-primary" onClick={handleclick}>Update Note</button>
                             </div>
                         </div>
                     </div>
@@ -67,11 +67,11 @@ const Notes = () => {
             <h1>Your Notes!!!</h1>
             <button className='my-3' onClick={fetchnotes}>Get Notes</button>
             <h3 className='my-3 text-danger'>
-                {notes.length===0 && "No Notes to Display!!"}
+                {notes.length === 0 && "No Notes to Display!!"}
             </h3>
             <div className='row'>
                 {notes.map((note) => {
-                    return <NoteItem updatenote={updatenote} key={note._id} note={note} />;
+                    return <NoteItem showalert={props.showalert} updatenote={updatenote} key={note._id} note={note} />;
                 })}
             </div>
         </div>
