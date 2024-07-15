@@ -19,7 +19,7 @@ let Notestate = (props) => {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
-                    "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjY3OTRlNGEzMjRjOWRjMTcwOTBiMDQ2In0sImlhdCI6MTcxOTY0MjI0MH0.Ko2_yqzNv80vXK91_Ll93s9syy19s17hyjlRgvHqkyY"
+                    "auth-token": localStorage.getItem('token')
                 },
             });
             if (!response.ok) {
@@ -45,7 +45,7 @@ let Notestate = (props) => {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjY3OTRlNGEzMjRjOWRjMTcwOTBiMDQ2In0sImlhdCI6MTcxOTY0MjI0MH0.Ko2_yqzNv80vXK91_Ll93s9syy19s17hyjlRgvHqkyY"
+                    "auth-token": localStorage.getItem('token')
                 },
                 body: JSON.stringify({ title, description, tag })
             });
@@ -69,7 +69,7 @@ let Notestate = (props) => {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
-                    "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjY3OTRlNGEzMjRjOWRjMTcwOTBiMDQ2In0sImlhdCI6MTcxOTY0MjI0MH0.Ko2_yqzNv80vXK91_Ll93s9syy19s17hyjlRgvHqkyY"
+                    "auth-token": localStorage.getItem('token')
                 },
                 body: JSON.stringify({ title, description, tag })
             });
@@ -102,7 +102,7 @@ let Notestate = (props) => {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
-                    "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjY3OTRlNGEzMjRjOWRjMTcwOTBiMDQ2In0sImlhdCI6MTcxOTY0MjI0MH0.Ko2_yqzNv80vXK91_Ll93s9syy19s17hyjlRgvHqkyY"
+                    "auth-token": localStorage.getItem('token')
                 },
             });
             if (!response.ok) {

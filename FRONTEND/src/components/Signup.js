@@ -27,15 +27,13 @@ const Signup = (props) => {
                 throw new Error(`Response status: ${response.status}`);
             }
             const json = await response.json();
-            if(json.success)
-            {
-                localStorage.setItem("token",json.authtoken)
+            if (json.success) {
+                localStorage.setItem("token", json.authtoken)
                 history("/")
-                props.showAlert("Logged in successfully" ,"success")
+                props.showAlert("Logged in successfully", "success")
             }
-            else
-            {
-                props.showAlert("Invalid credentials","danger")
+            else {
+                props.showAlert("Invalid credentials", "danger")
             }
         } catch (error) {
             console.error(error.message);
@@ -43,16 +41,17 @@ const Signup = (props) => {
     }
     return (
         <div className='container'>
+            <h3>Login to continue using the notebook</h3>
             <form onSubmit={handleSubmit}>
-                <div className="form-group">
+                <div className="my-3 form-group">
                     <label htmlFor="name">Name:</label>
                     <input onChange={handleChange} value={credent.name} type="text" className="form-control" name='name' id="name" aria-describedby="emailHelp" placeholder="Enter email" />
                 </div>
-                <div className="form-group">
+                <div className="my-3 form-group">
                     <label htmlFor="email">Email address</label>
                     <input onChange={handleChange} value={credent.email} type="email" className="form-control" name='email' id="email" aria-describedby="emailHelp" placeholder="Enter email" />
                 </div>
-                <div className="form-group">
+                <div className="my-3 form-group">
                     <label htmlFor="password">Enter your password:</label>
                     <input onChange={handleChange} value={credent.password} type="password" className="form-control" id="password" name='password' placeholder="Password" />
                 </div>

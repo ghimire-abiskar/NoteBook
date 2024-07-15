@@ -3,9 +3,21 @@ import { useContext, useState } from 'react'
 import context from '../context/noteContext'
 import NoteItem from './NoteItem'
 import Modal from './Modal'
+import { useNavigate } from 'react-router-dom'
 const Notes = (props) => {
     const contextval = useContext(context);
     const { notes, fetchnotes, editNote } = contextval;
+    const navigator=useNavigate();
+    useEffect(()=>{
+        if(localStorage.getItem('token'))
+        {
+            fetchnotes();
+        }
+        else
+        {
+            navigator("/login")
+        }
+    })
     const ref = useRef(null);
     const refclose = useRef(null);
     const [note, setnotes] = useState({ title: "", description: "", tag: "", id: "" });
@@ -65,7 +77,6 @@ const Notes = (props) => {
                 </div>
             </div>
             <h1>Your Notes!!!</h1>
-            <button className='my-3' onClick={fetchnotes}>Get Notes</button>
             <h3 className='my-3 text-danger'>
                 {notes.length === 0 && "No Notes to Display!!"}
             </h3>

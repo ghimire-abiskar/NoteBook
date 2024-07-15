@@ -41,16 +41,16 @@ const Login = (props) => {
     }
 
     return (
-        <div className='container'>
+        <div className='container mt-4'>
+            <h3>Login to continue using the notebook</h3>
             <form onSubmit={handleSubmit}>
-                <div className="form-group">
+                <div className="form-group my-3">
                     <label htmlFor="email">Email address</label>
-                    <input value={credent.email} onChange={handleChange} type="email" className="form-control" name='email' id="email" placeholder="Enter email" />
-                    <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+                    <input value={credent.email} onChange={handleChange} type="email" className="form-control" name='email' id="email" placeholder="Enter email" required/>
                 </div>
-                <div className="form-group">
+                <div className="form-group my-3">
                     <label htmlFor="password">Password</label>
-                    <input value={credent.password} onChange={handleChange} type="password" className="form-control" id="password" name='password' placeholder="Password" />
+                    <input value={credent.password} onChange={handleChange} type="password" className="form-control" id="password" name='password' placeholder="Password" required />
                 </div>
                 <button type="submit" className="btn btn-primary my-3">Submit</button>
             </form>
